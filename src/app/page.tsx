@@ -12,9 +12,35 @@ import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // JSON-LD for better entity understanding (Organization)
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "SAIMCO",
+            url: siteUrl,
+            logo: `${siteUrl}/saimco-logo-transparent.png`,
+            description:
+              "Automatización industrial en México: PLC/SCADA, control de procesos, digitalización e Industria 4.0.",
+            areaServed: "MX",
+            knowsAbout: [
+              "automatización industrial",
+              "PLC",
+              "SCADA",
+              "control de procesos",
+              "Industria 4.0",
+              "IoT industrial",
+            ],
+          }),
+        }}
+      />
       <Header />
       <main>
         <Hero />
